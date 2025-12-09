@@ -150,8 +150,9 @@ Field order is not strictly enforced, but recommended order is:
 ### 4.5 Comments
 
 HSIL supports comments using semicolons:
-; User exploring a dangerous area
-(intent (type E1_Discover) (intensity 0.6) ...)
+
+    ; User exploring a dangerous area
+    (intent (type E1_Discover) (intensity 0.6) ...)
 
 ## 5. Composite Intent Expressions
 
