@@ -1,4 +1,9 @@
 # HSIL — Human Semantic Intention Language  
+[![Version](https://img.shields.io/badge/HSIL-v0.1-blue)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
+[![License: CC BY 4.0](https://img.shields.io/badge/Spec%20License-CC--BY%204.0-orange.svg)]()
+[![Status](https://img.shields.io/badge/Status-Draft-yellow.svg)]()
+
 ### Version 0.1 — Draft  
 **Created by: Khalid Majd (2025)**  
 **Licensing:** MIT (code) and CC BY 4.0 (specification)
