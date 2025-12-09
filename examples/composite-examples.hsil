@@ -1,0 +1,15 @@
+(intent-composite
+    (mode Conflict)
+    (intent
+        (type E1_Discover)
+        (intensity 0.52)
+        (scope Environment)
+        (temporal Immediate)
+    )
+    (intent
+        (type P4_Avoid)
+        (intensity 0.81)
+        (scope Self)
+        (temporal Immediate)
+    )
+)
