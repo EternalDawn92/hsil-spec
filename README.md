@@ -62,6 +62,67 @@ Proposals follow the HSIP process:
 proposals/HSIP-TEMPLATE.md
 
 ---
+---
+
+## Reference Parsers
+
+HSIL includes minimal reference parsers to help developers validate and consume
+HSIL expressions in real systems. These implementations follow the v0.1
+specification and are intended as baseline examples.
+
+### Python Parser
+
+Location:
+reference/parser-python/hsil_parser.py
+
+Example usage:
+
+from hsil_parser import parse_hsil
+
+text = """
+(intent
+    (type E1_Discover)
+    (intensity 0.55)
+    (scope Environment)
+    (temporal Immediate)
+)
+"""
+
+result = parse_hsil(text)
+print(result)
+
+### TypeScript Parser
+
+Location:
+reference/parser-ts/hsilParser.ts
+
+Example usage:
+
+import { parseHSIL } from "./hsilParser";
+
+const text = `
+(intent
+    (type R2_Communicate)
+    (intensity 0.73)
+    (scope Other)
+    (temporal ShortTerm)
+)
+`;
+
+console.log(parseHSIL(text));
+
+These parsers perform:
+
+- Required field validation
+
+- Value constraint checking
+
+- Composite intent validation
+
+They are intentionally minimal and serve as a reference for building
+more robust parsers in production systems.
+
+---
 
 ## 📜 License
 
