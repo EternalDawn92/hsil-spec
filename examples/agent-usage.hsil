@@ -1,0 +1,7 @@
+(intent
+    (type R2_Communicate)
+    (intensity 0.73)
+    (scope Other)
+    (temporal ShortTerm)
+    (context "User expressing desire to talk")
+)
