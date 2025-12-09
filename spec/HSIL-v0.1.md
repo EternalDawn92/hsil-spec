@@ -181,6 +181,7 @@ Intentions oppose each other.
 ### 5.3 Priority Rules for Conflict
 
 Default hierarchy:
+
 Protective (P-series)
 
 Relational (R-series)
