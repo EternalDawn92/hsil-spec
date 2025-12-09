@@ -108,6 +108,9 @@ HSIL is designed to evolve carefully through community-driven proposals (HSIPs) 
 ---
 
 ## Repository Structure
+
+Below is the layout of the HSIL repository:
+
 .
 ├── README.md
 ├── LICENSE # MIT license for code
@@ -130,8 +133,7 @@ HSIL is designed to evolve carefully through community-driven proposals (HSIPs) 
 └── parser-ts/
 └── hsilParser.ts
 
-This structure ensures the specification, governance, examples, and reference implementations are easy to navigate for all contributors.
-
+This structure ensures the specification, governance documents, examples, and reference implementations are easy to navigate for all contributors.
 
 ---
 
