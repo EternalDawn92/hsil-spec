@@ -78,18 +78,6 @@ HSIL solves alignment and interpretability challenges by providing:
 
 ---
 
-## 🏛 Governance
-
-Governance rules are defined in:
-
-governance/GOVERNANCE.md
-
-Proposals follow the HSIP process:
-
-proposals/HSIP-TEMPLATE.md
-
----
-
 ## Roadmap
 
 This roadmap outlines the planned evolution of HSIL from experimental concept to stable open standard.
@@ -276,6 +264,18 @@ These parsers perform:
 
 They are intentionally minimal and serve as a reference for building
 more robust parsers in production systems.
+
+---
+
+## 🏛 Governance
+
+Governance rules are defined in:
+
+governance/GOVERNANCE.md
+
+Proposals follow the HSIP process:
+
+proposals/HSIP-TEMPLATE.md
 
 ---
 
