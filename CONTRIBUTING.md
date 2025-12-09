@@ -13,8 +13,10 @@ All changes must be submitted through the HSIP process:
 1. Fork this repository  
 2. Create a file in `/proposals/` using the naming format:
 HSIP-###-short-title.md
-3. Use the official template:  
-/proposals/HSIP-TEMPLATE.md
+3. Use the official template:
+ 
+       /proposals/HSIP-TEMPLATE.md
+
 4. Submit a Pull Request  
 
 The HSIL Steering Committee (HSC) reviews all proposals.
