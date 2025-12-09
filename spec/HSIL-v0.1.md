@@ -190,7 +190,7 @@ Transformative (T-series)
 
 Exploratory (E-series)
 
-Intensity and temporal urgency may override this hierarchy.
+'Intensity' and 'temporal' urgency may override this hierarchy.
 
 ### 5.4 Effective Intent Resolution (EIR)
 
