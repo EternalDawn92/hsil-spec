@@ -169,13 +169,13 @@ Composite Intent Expressions model these scenarios.
 
 ### 5.2 Composition Modes
 
-[Dominant]
+(Dominant )
 A primary intention overrides others.
 
-[Blended]
+(Blended )
 Multiple intentions coexist harmoniously.
 
-[Conflict]
+(Conflict )
 Intentions oppose each other.
 
 ### 5.3 Priority Rules for Conflict
