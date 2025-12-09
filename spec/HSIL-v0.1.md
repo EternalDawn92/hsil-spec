@@ -102,18 +102,20 @@ A value in the range 0.0–1.0 inclusive.
 
 (scope <Scope>)
 Valid values:
-Self  
-Other  
-Group  
-Object  
-Environment  
-System
+
+- Self  
+- Other  
+- Group  
+- Object  
+- Environment  
+- System
 
 (temporal <TemporalMode>)
 Valid values:
-Immediate  
-ShortTerm  
-LongTerm
+
+- Immediate  
+- ShortTerm  
+- LongTerm
 
 ### 4.3 Optional Fields
 
