@@ -1,0 +1,6 @@
+(intent
+    (type E1_Discover)
+    (intensity 0.55)
+    (scope Environment)
+    (temporal Immediate)
+)
