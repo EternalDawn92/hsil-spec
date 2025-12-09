@@ -23,12 +23,12 @@ HSIL defines:
 
 Here is a minimal HSIL Intent Expression:
 
-(intent
-(type E1_Discover)
-(intensity 0.60)
-(scope Environment)
-(temporal Immediate)
-)
+    (intent
+        (type E1_Discover)
+        (intensity 0.60)
+        (scope Environment)
+        (temporal Immediate)
+    )
 
 
 Core rules in HSIL v0.1:
@@ -40,10 +40,10 @@ Core rules in HSIL v0.1:
 
 You can find additional examples in:
 
-examples/
-basic-intents.hsil
-composite-examples.hsil
-agent-usage.hsil
+    examples/
+      basic-intents.hsil
+      composite-examples.hsil
+      agent-usage.hsil
 
 ---
 
@@ -51,7 +51,7 @@ agent-usage.hsil
 
 The official HSIL v0.1 specification is located at:
 
-spec/HSIL-v0.1.md
+    spec/HSIL-v0.1.md
 
 ---
 
@@ -152,12 +152,12 @@ Start by modeling a human intention using the HSIL syntax:
 
 For example:
 
-(intent
-(type T1_Create)
-(intensity 0.72)
-(scope Object)
-(temporal ShortTerm)
-)
+    (intent
+       (type T1_Create)
+       (intensity 0.72)
+       (scope Object)
+       (temporal ShortTerm)
+    )
 
 
 ---
@@ -167,12 +167,12 @@ You may use one of the official parsers included in this repository.
 
 Python:
 
-result = parse_hsil(text)
+    result = parse_hsil(text)
 
 
 TypeScript:
 
-const intent = parseHSIL(text);
+    const intent = parseHSIL(text);
 
 
 These parsers check:
@@ -219,43 +219,45 @@ specification and are intended as baseline examples.
 ### Python Parser
 
 Location:
-reference/parser-python/hsil_parser.py
+
+    reference/parser-python/hsil_parser.py
 
 Example usage:
 
-from hsil_parser import parse_hsil
+    from hsil_parser import parse_hsil
 
-text = """
-(intent
-    (type E1_Discover)
-    (intensity 0.55)
-    (scope Environment)
-    (temporal Immediate)
-)
-"""
+    text = """
+    (intent
+        (type E1_Discover)
+        (intensity 0.55)
+        (scope Environment)
+        (temporal Immediate)
+    )
+    """
 
-result = parse_hsil(text)
-print(result)
+    result = parse_hsil(text)
+    print(result)
 
 ### TypeScript Parser
 
 Location:
-reference/parser-ts/hsilParser.ts
+
+    reference/parser-ts/hsilParser.ts
 
 Example usage:
 
-import { parseHSIL } from "./hsilParser";
+    import { parseHSIL } from "./hsilParser";
 
-const text = `
-(intent
-    (type R2_Communicate)
-    (intensity 0.73)
-    (scope Other)
-    (temporal ShortTerm)
-)
-`;
+    const text = `
+    (intent
+        (type R2_Communicate)
+        (intensity 0.73)
+        (scope Other)
+        (temporal ShortTerm)
+    )
+    `;
 
-console.log(parseHSIL(text));
+    console.log(parseHSIL(text));
 
 These parsers perform:
 
@@ -274,11 +276,11 @@ more robust parsers in production systems.
 
 Governance rules are defined in:
 
-governance/GOVERNANCE.md
+    governance/GOVERNANCE.md
 
 Proposals follow the HSIP process:
 
-proposals/HSIP-TEMPLATE.md
+    proposals/HSIP-TEMPLATE.md
 
 ---
 
