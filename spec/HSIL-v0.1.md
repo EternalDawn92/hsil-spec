@@ -196,13 +196,13 @@ Exploratory (E-series)
 
 Composite expressions resolve to a single actionable Intent Expression using:
 
-Mode analysis
+- Mode analysis
 
-Hierarchy
+- Hierarchy
 
-Intensity values
+- Intensity values
 
-Temporal urgency
+- Temporal urgency
 
 Downstream systems act on the resolved intent.
 
@@ -338,15 +338,15 @@ Future versions will expand these areas.
 
 Semantic Versioning:
 
-0.x → experimental
+- 0.x → experimental
 
-1.0 → stable baseline
+- 1.0 → stable baseline
 
-1.x → additive changes
+- 1.x → additive changes
 
-2.0 → major conceptual shift
+- 2.0 → major conceptual shift
 
-11. Licensing & Attribution
+## 11. Licensing & Attribution
 
 This specification is licensed under Creative Commons BY 4.0.
 Required attribution:
