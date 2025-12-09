@@ -90,6 +90,35 @@ proposals/HSIP-TEMPLATE.md
 
 ---
 
+## Roadmap
+
+This roadmap outlines the planned evolution of HSIL from experimental concept to stable open standard.
+
+### **v0.2 — Refinement Phase**
+- Additional examples and test cases  
+- Specification clarifications based on community feedback  
+- Optional emotional context guidelines  
+- Improvements to reference parsers  
+
+### **v0.3 — Structural Enhancements**
+- Preliminary intent graph concepts  
+- Dynamic temporal transition modeling  
+- Multi-agent negotiation guidelines  
+- Deeper examples for robotics, agents, and simulations  
+
+### **v1.0 — Stable Standard**
+- Syntax frozen for long-term compatibility  
+- Comprehensive test suite and validation tools  
+- Fully specified core dictionary and fields  
+- Conformance guidelines for agent frameworks  
+- Formal HSIL certification process (optional)
+
+---
+
+HSIL is designed to evolve carefully through community-driven proposals (HSIPs) and governance review to ensure stability and extensibility.
+
+---
+
 ## Repository Structure
 .
 ├── README.md
