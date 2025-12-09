@@ -12,18 +12,27 @@
 
 ---
 
-## 📘 Overview
+## Overview
 
-HSIL (Human Semantic Intention Language) is an open, universal, machine-readable language for representing human intention.  
-It provides a structured format that allows AI agents, robots, synthetic worlds, and intelligent systems to reason about what humans *mean*, not just what they *say*.
+HSIL (Human Semantic Intention Language) is an expressive, structured language for representing human intentions in a form that AI systems, agents, and computational environments can interpret consistently.  
+Its purpose is to create a universal, machine-readable interface for intention—something that can be parsed, validated, reasoned over, and acted upon by both symbolic and learned systems.
 
-HSIL defines:
+HSIL enables:
 
-- 20 core Intent Elements  
-- Formal syntax for Intent Expressions  
-- Composite, conflicting, and blended intentions  
-- Effective Intent Resolution  
-- AI agent and multi-agent usage guidelines  
+- **Interpretable human–AI communication**  
+  AI systems can understand explicit intention signals rather than inferring them indirectly.
+
+- **Unified semantics across agents**  
+  Multiple agents—robotic, software-based, autonomous—can collaborate using a shared intention protocol.
+
+- **Robust grounding for synthetic environments**  
+  Simulations, virtual worlds, and agentic frameworks can use HSIL as a stable internal representation of goals and motivation.
+
+- **Extensibility for advanced behaviors**  
+  HSIL is designed to grow through formal proposals (HSIPs), allowing new intention types, modalities, and structural elements.
+
+HSIL v0.1 defines the core syntax, intention elements, temporal structures, and composition rules required for deterministic interpretation. Future versions expand capabilities through community-driven governance.
+
 ---
 
 ## Quickstart
