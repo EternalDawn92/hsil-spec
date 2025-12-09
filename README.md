@@ -90,6 +90,34 @@ proposals/HSIP-TEMPLATE.md
 
 ---
 
+## Repository Structure
+.
+├── README.md
+├── LICENSE # MIT license for code
+├── LICENSE-CC-BY-4.0 # CC-BY license for specification and docs
+├── CONTRIBUTING.md
+├── spec/
+│ ├── HSIL-v0.1.md # Main HSIL specification
+│ └── pdf/ # (optional) PDF exports
+├── governance/
+│ └── GOVERNANCE.md # HSIL governance model
+├── proposals/
+│ └── HSIP-TEMPLATE.md # Template for proposing changes/extensions
+├── examples/
+│ ├── basic-intents.hsil
+│ ├── composite-examples.hsil
+│ └── agent-usage.hsil
+└── reference/
+├── parser-python/
+│ └── hsil_parser.py
+└── parser-ts/
+└── hsilParser.ts
+
+This structure ensures the specification, governance, examples, and reference implementations are easy to navigate for all contributors.
+
+
+---
+
 ## Developer Workflow
 
 This section describes how developers typically work with HSIL in real systems.
