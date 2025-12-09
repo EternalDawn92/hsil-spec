@@ -4,6 +4,8 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/Spec%20License-CC--BY%204.0-orange.svg)]()
 [![Status](https://img.shields.io/badge/Status-Draft-yellow.svg)]()
 
+*A structured, interpretable language for encoding human intention across agents, AI models, and synthetic environments.*
+
 ### Version 0.1 — Draft  
 **Created by: Khalid Majd (2025)**  
 **Licensing:** MIT (code) and CC BY 4.0 (specification)
