@@ -111,29 +111,30 @@ HSIL is designed to evolve carefully through community-driven proposals (HSIPs) 
 
 Below is the layout of the HSIL repository:
 
-.
-├── README.md
-├── LICENSE # MIT license for code
-├── LICENSE-CC-BY-4.0 # CC-BY license for specification and docs
-├── CONTRIBUTING.md
-├── spec/
-│ ├── HSIL-v0.1.md # Main HSIL specification
-│ └── pdf/ # (optional) PDF exports
-├── governance/
-│ └── GOVERNANCE.md # HSIL governance model
-├── proposals/
-│ └── HSIP-TEMPLATE.md # Template for proposing changes/extensions
-├── examples/
-│ ├── basic-intents.hsil
-│ ├── composite-examples.hsil
-│ └── agent-usage.hsil
-└── reference/
-├── parser-python/
-│ └── hsil_parser.py
-└── parser-ts/
-└── hsilParser.ts
+    .
+    ├── README.md
+    ├── LICENSE                # MIT license for code
+    ├── LICENSE-CC-BY-4.0      # CC-BY license for specification and docs
+    ├── CONTRIBUTING.md
+    ├── spec/
+    │   ├── HSIL-v0.1.md       # Main HSIL specification
+    │   └── pdf/               # (optional) PDF exports
+    ├── governance/
+    │   └── GOVERNANCE.md      # HSIL governance model
+    ├── proposals/
+    │   └── HSIP-TEMPLATE.md   # Proposal template for changes/extensions
+    ├── examples/
+    │   ├── basic-intents.hsil
+    │   ├── composite-examples.hsil
+    │   └── agent-usage.hsil
+    └── reference/
+        ├── parser-python/
+        │   └── hsil_parser.py
+        └── parser-ts/
+            └── hsilParser.ts
 
-This structure ensures the specification, governance documents, examples, and reference implementations are easy to navigate for all contributors.
+This structure ensures the specification, governance documents, examples, and
+reference implementations are easy to navigate for all contributors.
 
 ---
 
