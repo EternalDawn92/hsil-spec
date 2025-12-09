@@ -137,7 +137,7 @@ Nested constraints describing additional conditions, such as:
 
 Field order is not strictly enforced, but recommended order is:
 
-1.type
+1. type
 
 2. intensity
 
