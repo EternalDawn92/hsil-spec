@@ -17,6 +17,33 @@ HSIL defines:
 - Composite, conflicting, and blended intentions  
 - Effective Intent Resolution  
 - AI agent and multi-agent usage guidelines  
+---
+
+## Quickstart
+
+Here is a minimal HSIL Intent Expression:
+
+(intent
+(type E1_Discover)
+(intensity 0.60)
+(scope Environment)
+(temporal Immediate)
+)
+
+
+Core rules in HSIL v0.1:
+
+- `type` must be one of the 20 Intent Elements (E/T/P/R series)  
+- `intensity` is a float between 0.0 and 1.0  
+- `scope` must be one of: Self, Other, Group, Object, Environment, System  
+- `temporal` must be one of: Immediate, ShortTerm, LongTerm  
+
+You can find additional examples in:
+
+examples/
+basic-intents.hsil
+composite-examples.hsil
+agent-usage.hsil
 
 ---
 
