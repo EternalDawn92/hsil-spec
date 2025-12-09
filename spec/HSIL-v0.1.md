@@ -85,12 +85,12 @@ HSIL uses a structured S-expression-like syntax. Parentheses define hierarchy; w
 
 ### 4.1 Basic Intent Expression Format
 
-(intent
-    (type <IntentElement>)
-    (intensity <Float>)
-    (scope <Scope>)
-    (temporal <TemporalMode>)
-)
+    (intent
+        (type <IntentElement>)
+        (intensity <Float>)
+        (scope <Scope>)
+        (temporal <TemporalMode>)
+    )
 
 ### 4.2 Required Fields
 
