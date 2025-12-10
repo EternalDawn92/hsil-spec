@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HSIL Demo – Natural Language & Validator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+      color: #111827;
+    }
+    header {
+      padding: 16px 24px;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header .title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    header .subtitle {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    main {
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 20px;
+    }
+    .panel {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      box-sizing: border-box;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 1px #6366f1;
+      background: #ffffff;
+    }
+    .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    button.secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .small-note {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+    .output {
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 8px;
+      border: 1px solid #e5e7eb;
+      max-height: 260px;
+      overflow: auto;
+    }
+    .status {
+      font-size: 12px;
+      margin-top: 8px;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .status.ok {
+      background: #ecfdf3;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    .status.error {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #374151;
+    }
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="title">HSIL Demo</div>
+      <div class="subtitle">Natural Language → HSIL • Validator & Parser</div>
+    </div>
+    <div style="font-size: 11px; opacity: 0.8;">
+      HSIL v0.1 • Human Semantic Intention Language
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" style="margin-bottom: 20px;">
+      <h2>1. Natural Language → HSIL Suggestion</h2>
+      <p style="font-size: 13px; color: #4b5563;">
+        Type a short sentence describing what the human intends. The demo will propose
+        a corresponding HSIL intent expression using a simple rule-based mapper.
+        This is only a <strong>conceptual demo</strong>, not a trained model.
+      </p>
+      <div class="label">Natural language input</div>
+      <textarea id="nlInput" placeholder="Example: I want to explore this object and understand how it works."></textarea>
+      <div class="buttons">
+        <button id="btnGenerate">Generate HSIL suggestion</button>
+        <button class="secondary" id="btnClear">Clear</button>
+      </div>
+      <div class="small-note">
+        The mapping is heuristic: it looks for keywords to choose an Intent Element, scope, and temporal mode.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>2. HSIL Editor & Validator</h2>
+        <div class="label">HSIL expression</div>
+        <textarea id="hsilInput" placeholder="(intent&#10;    (type E1_Discover)&#10;    (intensity 0.60)&#10;    (scope Environment)&#10;    (temporal Immediate)&#10;)"></textarea>
+        <div class="buttons">
+          <button id="btnValidate">Validate HSIL</button>
+          <button class="secondary" id="btnPretty">Pretty format</button>
+          <button class="secondary" id="btnLoadExample">Load sample intent</button>
+        </div>
+        <div class="small-note">
+          You can edit the HSIL directly. Validation follows HSIL v0.1 rules: allowed types, scopes, temporal modes,
+          and intensity range (0.0–1.0).
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>3. Parsed Output & Status</h2>
+        <div class="label">Validation status</div>
+        <div id="statusBox" class="status" style="display:none;"></div>
+
+        <div class="label" style="margin-top: 12px;">Parsed structure (JSON)</div>
+        <div id="jsonOutput" class="output">{}</div>
+
+        <div class="label" style="margin-top: 12px;">Active constraints</div>
+        <div class="pill-row">
+          <div class="pill">Intensity 0.0–1.0</div>
+          <div class="pill">20 Intent Elements (E/T/P/R)</div>
+          <div class="pill">Scopes: Self/Other/Group/Object/Environment/System</div>
+          <div class="pill">Temporal: Immediate/ShortTerm/LongTerm</div>
+          <div class="pill">Composite mode: Dominant/Blended/Conflict</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // --- HSIL reference data (must match HSIL v0.1 spec) ---
+
+    const INTENT_ELEMENTS = new Set([
+      "E1_Discover","E2_Understand","E3_SeekNovelty","E4_Observe","E5_Expand",
+      "T1_Create","T2_Modify","T3_Optimize","T4_Construct","T5_Transition",
+      "P1_Preserve","P2_Defend","P3_Stabilize","P4_Avoid","P5_Anchor",
+      "R1_Connect","R2_Communicate","R3_Collaborate","R4_Empathize","R5_Belong"
+    ]);
+
+    const VALID_SCOPES = new Set(["Self","Other","Group","Object","Environment","System"]);
+    const VALID_TEMPORAL = new Set(["Immediate","ShortTerm","LongTerm"]);
+    const VALID_MODES = new Set(["Dominant","Blended","Conflict"]);
+
+    class ParseError extends Error {}
+
+    function extract(field, text) {
+      const pattern = new RegExp("\\(" + field + "\\s+([^\\)]+)\\)");
+      const match = text.match(pattern);
+      return match ? match[1].trim() : null;
+    }
+
+    function parseIntent(text) {
+      const type = extract("type", text);
+      const intensity = extract("intensity", text);
+      const scope = extract("scope", text);
+      const temporal = extract("temporal", text);
+
+      if (!type) throw new ParseError("Missing field: type");
+      if (!INTENT_ELEMENTS.has(type)) throw new ParseError("Invalid Intent Element: " + type);
+
+      if (intensity === null) throw new ParseError("Missing field: intensity");
+      const intensityVal = parseFloat(intensity);
+      if (Number.isNaN(intensityVal)) throw new ParseError("Intensity must be numeric");
+      if (intensityVal < 0.0 || intensityVal > 1.0) throw new ParseError("Intensity must be between 0.0 and 1.0");
+
+      if (!scope || !VALID_SCOPES.has(scope)) throw new ParseError("Invalid scope: " + scope);
+      if (!temporal || !VALID_TEMPORAL.has(temporal)) throw new ParseError("Invalid temporal mode: " + temporal);
+
+      return {
+        kind: "intent",
+        type,
+        intensity: intensityVal,
+        scope,
+        temporal
+      };
+    }
+
+    function parseComposite(text) {
+      const mode = extract("mode", text);
+      if (!mode || !VALID_MODES.has(mode)) {
+        throw new ParseError("Invalid or missing composite mode: " + mode);
+      }
+
+      const intentRegex = /\(intent[\s\S]*?\)/g;
+      const matches = text.match(intentRegex) || [];
+      if (matches.length < 2) {
+        throw new ParseError("Composite requires at least 2 (intent ...) blocks");
+      }
+
+      const intents = matches.map(block => parseIntent(block));
+
+      return {
+        kind: "intent-composite",
+        mode,
+        intents
+      };
+    }
+
+    function parseHSIL(text) {
+      const trimmed = text.trim();
+      if (trimmed.startsWith("(intent-composite")) {
+        return parseComposite(trimmed);
+      } else if (trimmed.startsWith("(intent")) {
+        return parseIntent(trimmed);
+      } else {
+        throw new ParseError("Document must begin with (intent ...) or (intent-composite ...)");
+      }
+    }
+
+    function prettyFormatHSIL(text) {
+      // Minimal pretty printer: re-indent (intent ...) blocks
+      // This is intentionally simple and may not handle nested arbitrary S-expressions.
+      const trimmed = text.trim();
+      if (trimmed.startsWith("(intent-composite")) {
+        const mode = extract("mode", trimmed) || "Dominant";
+        const intents = (trimmed.match(/\(intent[\s\S]*?\)/g) || []).map(block => prettyFormatIntent(block, 2));
+        return [
+          "(intent-composite",
+          `    (mode ${mode})`,
+          ...intents,
+          ")"
+        ].join("\n");
+      } else if (trimmed.startsWith("(intent")) {
+        return prettyFormatIntent(trimmed, 0);
+      }
+      return trimmed;
+    }
+
+    function prettyFormatIntent(text, indentLevel) {
+      const indent = " ".repeat(indentLevel * 2);
+      const type = extract("type", text) || "E1_Discover";
+      const intensity = extract("intensity", text) || "0.50";
+      const scope = extract("scope", text) || "Self";
+      const temporal = extract("temporal", text) || "Immediate";
+
+      return [
+        `${indent}(intent`,
+        `${indent}  (type ${type})`,
+        `${indent}  (intensity ${intensity})`,
+        `${indent}  (scope ${scope})`,
+        `${indent}  (temporal ${temporal})`,
+        `${indent})`
+      ].join("\n");
+    }
+
+    // --- Natural language to HSIL heuristic mapper ---
+
+    function nlToHSIL(text) {
+      const t = text.toLowerCase();
+
+      // Default values
+      let type = "E1_Discover";
+      let scope = "Environment";
+      let temporal = "Immediate";
+      let intensity = 0.55;
+
+      // Detect intent type by keywords (very naive, just for demo)
+      if (t.match(/\b(explore|discover|look around|learn about)\b/)) {
+        type = "E1_Discover";
+      } else if (t.match(/\b(understand|figure out|analyze|explain)\b/)) {
+        type = "E2_Understand";
+      } else if (t.match(/\b(create|build|make|design)\b/)) {
+        type = "T1_Create";
+      } else if (t.match(/\b(optimize|improve|upgrade|enhance)\b/)) {
+        type = "T3_Optimize";
+      } else if (t.match(/\b(avoid|stop|prevent|escape)\b/)) {
+        type = "P4_Avoid";
+      } else if (t.match(/\b(protect|defend|secure)\b/)) {
+        type = "P2_Defend";
+      } else if (t.match(/\b(connect|talk to|message|reach out)\b/)) {
+        type = "R2_Communicate";
+      } else if (t.match(/\b(join|belong|fit in)\b/)) {
+        type = "R5_Belong";
+      }
+
+      // Scope
+      if (t.match(/\b(me|myself|i want|for myself)\b/)) {
+        scope = "Self";
+      } else if (t.match(/\b(you|them|him|her|other people|someone)\b/)) {
+        scope = "Other";
+      } else if (t.match(/\b(team|group|we|us|everyone)\b/)) {
+        scope = "Group";
+      } else if (t.match(/\b(object|item|thing|device)\b/)) {
+        scope = "Object";
+      } else if (t.match(/\b(environment|space|area|room|world)\b/)) {
+        scope = "Environment";
+      } else if (t.match(/\b(system|app|software|platform)\b/)) {
+        scope = "System";
+      }
+
+      // Temporal
+      if (t.match(/\b(now|right now|immediately|asap|today)\b/)) {
+        temporal = "Immediate";
+      } else if (t.match(/\b(soon|this week|later|tomorrow)\b/)) {
+        temporal = "ShortTerm";
+      } else if (t.match(/\b(long term|over time|future|eventually)\b/)) {
+        temporal = "LongTerm";
+      }
+
+      // Intensity (very rough heuristic based on words)
+      if (t.match(/\b(really|very|strongly|desperately|urgently|must)\b/)) {
+        intensity = 0.8;
+      } else if (t.match(/\b(maybe|curious|just want to)\b/)) {
+        intensity = 0.4;
+      }
+
+      return prettyFormatHSIL(`(intent (type ${type}) (intensity ${intensity.toFixed(2)}) (scope ${scope}) (temporal ${temporal}))`);
+    }
+
+    // --- Wire up UI ---
+
+    const nlInput = document.getElementById("nlInput");
+    const hsilInput = document.getElementById("hsilInput");
+    const jsonOutput = document.getElementById("jsonOutput");
+    const statusBox = document.getElementById("statusBox");
+
+    document.getElementById("btnGenerate").addEventListener("click", () => {
+      const text = nlInput.value.trim();
+      if (!text) {
+        showStatus("Please enter a natural language sentence first.", false);
+        return;
+      }
+      const hsil = nlToHSIL(text);
+      hsilInput.value = hsil;
+      validateHSIL();
+    });
+
+    document.getElementById("btnClear").addEventListener("click", () => {
+      nlInput.value = "";
+    });
+
+    document.getElementById("btnValidate").addEventListener("click", () => {
+      validateHSIL();
+    });
+
+    document.getElementById("btnPretty").addEventListener("click", () => {
+      const text = hsilInput.value;
+      if (!text.trim()) return;
+      hsilInput.value = prettyFormatHSIL(text);
+    });
+
+    document.getElementById("btnLoadExample").addEventListener("click", () => {
+      const example = `(intent
+  (type E1_Discover)
+  (intensity 0.60)
+  (scope Environment)
+  (temporal Immediate)
+)`;
+      hsilInput.value = example;
+      validateHSIL();
+    });
+
+    function showStatus(message, ok) {
+      statusBox.style.display = "block";
+      statusBox.textContent = message;
+      statusBox.className = "status " + (ok ? "ok" : "error");
+    }
+
+    function validateHSIL() {
+      const text = hsilInput.value;
+      if (!text.trim()) {
+        showStatus("No HSIL expression to validate.", false);
+        jsonOutput.textContent = "{}";
+        return;
+      }
+      try {
+        const parsed = parseHSIL(text);
+        jsonOutput.textContent = JSON.stringify(parsed, null, 2);
+        showStatus("HSIL expression is valid.", true);
+      } catch (err) {
+        if (err instanceof ParseError) {
+          showStatus("Invalid HSIL: " + err.message, false);
+        } else {
+          showStatus("Unexpected error while parsing HSIL.", false);
+        }
+        jsonOutput.textContent = "{}";
+      }
+    }
+
+    // Load an initial example
+    hsilInput.value = `(intent
+  (type E1_Discover)
+  (intensity 0.60)
+  (scope Environment)
+  (temporal Immediate)
+)`;
+    validateHSIL();
+  </script>
+</body>
+</html>
