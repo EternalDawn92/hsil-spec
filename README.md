@@ -71,7 +71,7 @@ The official HSIL v0.1 specification is located at:
 
 ---
 
-## 🧠 Why HSIL?
+## Why HSIL?
 
 HSIL solves alignment and interpretability challenges by providing:
 
@@ -288,7 +288,7 @@ more robust parsers in production systems.
 
 ---
 
-## 🏛 Governance
+## Governance
 
 Governance rules are defined in:
 
